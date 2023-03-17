@@ -5,16 +5,22 @@ import java.util.ArrayList;
 public class Universo {
     private String nombre;
     private int CantSeres;
-    private ArrayList <SerVivo> Svs = new ArrayList();
+    private ArrayList <SerVivo> Svs;
 
     public Universo() {
     }
 
-    public Universo(String nombre, int CantSeres) {
+    public Universo(String nombre, int CantSeres, ArrayList<SerVivo> Svs) {
         this.nombre = nombre;
         this.CantSeres = CantSeres;
+        this.Svs = Svs;
     }
 
+    public Universo(String nombre, ArrayList<SerVivo> Svs) {
+        this.nombre = nombre;
+        this.Svs = Svs;
+    }
+    
     public String getNombre() {
         return nombre;
     }

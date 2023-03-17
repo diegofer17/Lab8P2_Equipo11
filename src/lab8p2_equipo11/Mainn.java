@@ -4,6 +4,11 @@
  */
 package lab8p2_equipo11;
 
+import java.util.ArrayList;
+import javax.swing.DefaultListModel;
+import javax.swing.JList;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author df346
@@ -13,8 +18,12 @@ public class Mainn extends javax.swing.JFrame {
     /**
      * Creates new form Mainn
      */
+    
+    Adm_seresvivos ads = new Adm_seresvivos("./seresvivos.lab");
+    
     public Mainn() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**
@@ -54,29 +63,33 @@ public class Mainn extends javax.swing.JFrame {
         jSpinner_poderSV1 = new javax.swing.JSpinner();
         jSpinner_anioSV1 = new javax.swing.JSpinner();
         btn_modSV = new javax.swing.JButton();
+        jd_edituni = new javax.swing.JDialog();
+        jPanel5 = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jl_univ = new javax.swing.JList<>();
+        jButton3 = new javax.swing.JButton();
+        jp_edituni = new javax.swing.JPopupMenu();
+        jmiu_eliminar = new javax.swing.JMenuItem();
+        jmiu_modificar = new javax.swing.JMenuItem();
         jPanel1 = new javax.swing.JPanel();
         jBtn_cargar = new javax.swing.JButton();
         jBtn_universo = new javax.swing.JButton();
         jBtn_servivo1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
+        jBtn_servivo2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
-        jTFnombreSV.setBackground(new java.awt.Color(255, 255, 255));
         jTFnombreSV.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jTFnombreSV.setForeground(new java.awt.Color(0, 0, 0));
         jTFnombreSV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        jCB_universoSV.setBackground(new java.awt.Color(255, 255, 255));
         jCB_universoSV.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jCB_universoSV.setForeground(new java.awt.Color(0, 0, 0));
         jCB_universoSV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Universo de procedencia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        jCB_razaSV.setBackground(new java.awt.Color(255, 255, 255));
         jCB_razaSV.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jCB_razaSV.setForeground(new java.awt.Color(0, 0, 0));
         jCB_razaSV.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
         jCB_razaSV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Raza", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -216,19 +229,13 @@ public class Mainn extends javax.swing.JFrame {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTFnombreSV1.setBackground(new java.awt.Color(255, 255, 255));
         jTFnombreSV1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jTFnombreSV1.setForeground(new java.awt.Color(0, 0, 0));
         jTFnombreSV1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nombre", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        jCB_universoSV1.setBackground(new java.awt.Color(255, 255, 255));
         jCB_universoSV1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jCB_universoSV1.setForeground(new java.awt.Color(0, 0, 0));
         jCB_universoSV1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Universo de procedencia", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
-        jCB_razaSV1.setBackground(new java.awt.Color(255, 255, 255));
         jCB_razaSV1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        jCB_razaSV1.setForeground(new java.awt.Color(0, 0, 0));
         jCB_razaSV1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Humano", "Amanto" }));
         jCB_razaSV1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Raza", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 0, 14))); // NOI18N
 
@@ -288,6 +295,71 @@ public class Mainn extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
+        jButton2.setText("Listar");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+
+        jl_univ.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jl_univMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(jl_univ);
+
+        jButton3.setText("Menu");
+        jButton3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton3MouseClicked(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(14, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE))
+                .addGap(150, 150, 150))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 327, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jButton2)
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(10, 10, 10))
+        );
+
+        javax.swing.GroupLayout jd_edituniLayout = new javax.swing.GroupLayout(jd_edituni.getContentPane());
+        jd_edituni.getContentPane().setLayout(jd_edituniLayout);
+        jd_edituniLayout.setHorizontalGroup(
+            jd_edituniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        jd_edituniLayout.setVerticalGroup(
+            jd_edituniLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jmiu_eliminar.setText("jMenuItem1");
+        jp_edituni.add(jmiu_eliminar);
+
+        jmiu_modificar.setText("jMenuItem2");
+        jp_edituni.add(jmiu_modificar);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -301,7 +373,7 @@ public class Mainn extends javax.swing.JFrame {
         jBtn_cargar.setBorderPainted(false);
         jBtn_cargar.setContentAreaFilled(false);
         jBtn_cargar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jBtn_cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 480, 200, 53));
+        jPanel1.add(jBtn_cargar, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 480, 200, 53));
 
         jBtn_universo.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jBtn_universo.setForeground(new java.awt.Color(255, 255, 255));
@@ -309,7 +381,12 @@ public class Mainn extends javax.swing.JFrame {
         jBtn_universo.setBorderPainted(false);
         jBtn_universo.setContentAreaFilled(false);
         jBtn_universo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jBtn_universo, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 250, 200, 53));
+        jBtn_universo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn_universoMouseClicked(evt);
+            }
+        });
+        jPanel1.add(jBtn_universo, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 240, 200, 53));
 
         jBtn_servivo1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jBtn_servivo1.setForeground(new java.awt.Color(255, 255, 255));
@@ -318,7 +395,12 @@ public class Mainn extends javax.swing.JFrame {
         jBtn_servivo1.setBorderPainted(false);
         jBtn_servivo1.setContentAreaFilled(false);
         jBtn_servivo1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jBtn_servivo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 360, 200, 53));
+        jBtn_servivo1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn_servivo1MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jBtn_servivo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 390, 200, 53));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -328,6 +410,20 @@ public class Mainn extends javax.swing.JFrame {
         jSeparator2.setForeground(new java.awt.Color(255, 255, 255));
         jSeparator2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255), 3));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, 480, 10));
+
+        jBtn_servivo2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jBtn_servivo2.setForeground(new java.awt.Color(255, 255, 255));
+        jBtn_servivo2.setText("Editar universo");
+        jBtn_servivo2.setToolTipText("");
+        jBtn_servivo2.setBorderPainted(false);
+        jBtn_servivo2.setContentAreaFilled(false);
+        jBtn_servivo2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jBtn_servivo2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jBtn_servivo2MouseClicked(evt);
+            }
+        });
+        jPanel1.add(jBtn_servivo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 310, 200, 53));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bosque1.jpg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 550, 730));
@@ -352,6 +448,54 @@ public class Mainn extends javax.swing.JFrame {
     private void btn_modSVMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_modSVMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_btn_modSVMouseClicked
+
+    private void jBtn_universoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn_universoMouseClicked
+        // TODO add your handling code here:
+        String nombre= JOptionPane.showInputDialog(this,"Ingrese el nombre");
+        
+        uni.add(new Universo(nombre,new ArrayList()));
+        JOptionPane.showMessageDialog(null, "Creado con exito");
+        
+    }//GEN-LAST:event_jBtn_universoMouseClicked
+
+    private void jBtn_servivo1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn_servivo1MouseClicked
+        // TODO add your handling code here:
+        jDialogServivo.pack();
+        jDialogServivo.setLocationRelativeTo(this);
+        jDialogServivo.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_jBtn_servivo1MouseClicked
+
+    private void jBtn_servivo2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jBtn_servivo2MouseClicked
+        // TODO add your handling code here:
+        jd_edituni.setVisible(true);
+        jd_edituni.pack();
+        jd_edituni.setLocationRelativeTo(this);
+        this.setVisible(false);
+    }//GEN-LAST:event_jBtn_servivo2MouseClicked
+
+    private void jl_univMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jl_univMouseClicked
+        // TODO add your handling code here:
+        if (jl_univ.getSelectedIndex() >= 0) {
+            if (evt.isMetaDown()) {
+                jp_edituni.show(evt.getComponent(),
+                        evt.getX(), evt.getY());
+
+            }
+        }
+    }//GEN-LAST:event_jl_univMouseClicked
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+        actualizarclases(jl_univ);
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton3MouseClicked
+        // TODO add your handling code here:
+        jd_edituni.setVisible(false);
+        this.setVisible(true);
+        this.setLocationRelativeTo(null);
+    }//GEN-LAST:event_jButton3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -394,8 +538,11 @@ public class Mainn extends javax.swing.JFrame {
     private javax.swing.JButton btn_modSV;
     private javax.swing.JButton jBtn_cargar;
     private javax.swing.JButton jBtn_servivo1;
+    private javax.swing.JButton jBtn_servivo2;
     private javax.swing.JButton jBtn_universo;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JComboBox<String> jCB_razaSV;
     private javax.swing.JComboBox<String> jCB_razaSV1;
     private javax.swing.JComboBox<String> jCB_universoSV;
@@ -411,9 +558,11 @@ public class Mainn extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPopupMenu jPopupMenu_crud;
     private javax.swing.JProgressBar jProgressBar1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSpinner jSpinner_anioSV;
     private javax.swing.JSpinner jSpinner_anioSV1;
@@ -421,8 +570,24 @@ public class Mainn extends javax.swing.JFrame {
     private javax.swing.JSpinner jSpinner_poderSV1;
     private javax.swing.JTextField jTFnombreSV;
     private javax.swing.JTextField jTFnombreSV1;
+    private javax.swing.JDialog jd_edituni;
+    private javax.swing.JList<String> jl_univ;
     private javax.swing.JMenuItem jmi_eliminar;
     private javax.swing.JButton jmi_menu;
     private javax.swing.JMenuItem jmi_modificar;
+    private javax.swing.JMenuItem jmiu_eliminar;
+    private javax.swing.JMenuItem jmiu_modificar;
+    private javax.swing.JPopupMenu jp_edituni;
     // End of variables declaration//GEN-END:variables
+static ArrayList<Universo> uni = new ArrayList();
+    static void actualizarclases(JList jl_todos) {
+        jl_todos.setModel(new DefaultListModel());
+        DefaultListModel modelo = (DefaultListModel) jl_todos.getModel();
+        for (int i = 0; i < uni.size(); i++) {
+            if (uni.get(i) instanceof Universo) {
+                modelo.addElement(uni.get(i));
+            }
+        }
+        jl_todos.setModel(modelo);
+    }
 }
